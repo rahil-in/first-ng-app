@@ -1,30 +1,13 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Todo } from '../model/todo.type';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoServices {
-  todoItems: Todo[] = [
-    {
-      userId: 1,
-      title: 'Learn Angular',
-      completed: false,
-      id: 1
-    },
-    {
-      userId: 1,
-      title: 'Develop an Angular App',
-      completed: false,
-      id: 2
-    },
-    {
-      userId: 1,
-      title: 'Test the Angular App',
-      completed: false,
-      id: 3
-    }
-
-  ]
-  constructor() { }
+  http = inject(HttpClient)
+  getTodos() {
+    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos');
+  }
 }
