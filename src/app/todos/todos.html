@@ -1,0 +1,6 @@
+<p>todos works!</p>
+<!-- <p>{{todoService.todoItems[0] | json}}</p> -->
+
+@for (todo of todoItems(); track todo.id) {
+    <p>{{todo.title}} </p>
+}
